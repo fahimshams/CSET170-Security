@@ -76,7 +76,7 @@
 <span class="three">Verifying - enter aes-256-cbc encryption password:</span></code></pre>
     </li>
     <li>The command will ask for a password and then verify it. Pick a good one and don't forget it!</li>
-    <li>Now you can upload the encrypted file to Slack. Send it in <span class="eight">#CSET-170</span>. Everyone will be able to see it, but only people with the password can read it.</li>
+    <li>Now you can upload the encrypted file to discord. Send it in <span class="eight">Discord Channel</span>. Everyone will be able to see it, but only people with the password can read it.</li>
     <li>Here's the hard part: figure out a way to get your password to your partner.</li>
     <li>Once you receive an encrypted message, you can run this command to decrypt the file and store the original message in a third file:
     <pre><code><span class="three">$</span> openssl aes-256-cbc -d -in alice_to_bob.enc.txt -out alice_to_bob.dec.txt</code></pre>
@@ -121,19 +121,19 @@
         <li>Private = <code>-----BEGIN PRIVATE KEY-----</code></li>
       </ul>
     </li>
-    <li>Now upload your <strong>public</strong> key to Slack so your partner can use it to send you a message.</li>
+    <li>Now upload your <strong>public</strong> key to discord channel so your partner can use it to send you a message.</li>
   </ol>
 
   <h3>Send Message</h3>
 
   <p>
-    Go find your partner's public key on Slack and download it. You'll use it to encrypt your message. In this command, Alice is using Bob's public key to encrypt her message:
+    Go find your partner's public key on discord and download it. You'll use it to encrypt your message. In this command, Alice is using Bob's public key to encrypt her message:
   </p>
 
   <pre><code><span class="three">$</span> openssl rsautl -encrypt -inkey bob_public.pem -pubin -in alice_to_bob.txt -out alice_to_bob.asym_enc.txt</code></pre>
 
   <p>
-    Send the encrypted file over Slack for your partner to decrypt. Here, Bob is using his private key to decrypt Alice's message and store the result in a file:
+    Send the encrypted file over discord for your partner to decrypt. Here, Bob is using his private key to decrypt Alice's message and store the result in a file:
   </p>
 
   <pre><code><span class="three">$</span> openssl rsautl -decrypt -inkey bob_private.pem -in alice_to_bob.asym_enc.txt -out alice_to_bob.asym_dec.txt</code></pre>
